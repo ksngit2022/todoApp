@@ -18,4 +18,8 @@ app.use(cors());
 //
 import userRouter from "./routers/userRouter.js";
 
-app.use("/api/v1", userRouter);
+app.use("/api/v1/user", userRouter);
+
+app.get("/", (req, res) => {
+  res.send("Server is working.");
+});

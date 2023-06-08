@@ -15,6 +15,7 @@ import {
   updateProfile,
   updateTask,
   verify,
+  getUsers,
 } from "../controllers/userControl.js";
 import { isAuthenticated } from "../middleware/auth.js";
 
@@ -24,6 +25,7 @@ router.route("/verify").post(isAuthenticated, verify);
 
 router.route("/login").post(login);
 router.route("/logout").post(logout);
+router.route("/list").get(getUsers);
 
 router.route("/newtask").post(isAuthenticated, addTask);
 router.route("/me").get(isAuthenticated, getMyProfile);

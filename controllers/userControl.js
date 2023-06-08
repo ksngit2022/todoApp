@@ -89,7 +89,7 @@ export const verify = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log("req.body......", req.body);
     if (!email || !password) {
       return res
         .status(422)
@@ -111,7 +111,7 @@ export const login = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Invalid Email or Password" });
     }
-
+    // console.log("user.....", user);
     sendToken(res, user, 200, "Login Successful");
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -319,4 +319,10 @@ export const resetPassword = async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
+};
+
+// get users
+export const getUsers = async (req, res) => {
+  const userList = await User.find();
+  return res.status(200).json({ userList });
 };

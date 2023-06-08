@@ -16,7 +16,7 @@ export const sendToken = (res, user, statusCode, message) => {
     tasks: user.tasks,
     verified: user.verified,
   };
-
+  console.log("userData.........", userData);
   res
     .status(statusCode)
     .cookie("token", token, options)
